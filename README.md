@@ -106,9 +106,5 @@ npm run dev
 
 ---
 
-## Author
-
-Chanmin Mun
-
 GitHub:
 [https://github.com/chanminmun](https://github.com/chanminmun)
