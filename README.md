@@ -1,16 +1,114 @@
-# React + Vite
+# DAI-Ly
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AI-based eye tracking learning focus analysis system.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+DAI-Ly analyzes user concentration during reading tests using webcam-based eye tracking.
 
-## React Compiler
+The system collects gaze, head pose, and blink data with MediaPipe Face Landmarker, stores raw data in AWS S3, processes data through an Airflow pipeline, and generates AI-based focus reports using Amazon Bedrock Claude.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Frontend
+
+* React
+* Vite
+* Tailwind CSS
+* MediaPipe
+* AWS Amplify
+
+### Backend / Pipeline
+
+* Python
+* Apache Airflow
+* NumPy
+* boto3
+
+### Cloud
+
+* AWS S3
+* AWS Cognito
+* AWS Lambda
+* AWS ECS
+* AWS ECR
+* AWS Bedrock
+* Docker
+
+---
+
+## Main Features
+
+* Real-time eye tracking
+* Gaze and head pose analysis
+* Blink detection
+* Learning focus scoring
+* AI-generated focus reports
+* AWS-based data pipeline
+
+---
+
+## System Flow
+
+````text
+Webcam
+  ↓
+MediaPipe Tracking
+  ↓
+S3 Raw Data Upload
+  ↓
+AWS Lambda Trigger
+  ↓
+Airflow DAG Execution
+  ↓
+Feature Extraction
+  ↓
+Amazon Bedrock Analysis
+  ↓
+AI Report Generation
+
+
+## Airflow Pipeline
+
+```text
+load_s3_data
+  ↓
+extract_features
+  ↓
+invoke_bedrock
+  ↓
+save_report
+```
+
+---
+
+## AWS Services
+
+| Service | Purpose                     |
+| ------- | --------------------------- |
+| Cognito | Authentication              |
+| S3      | Raw data and report storage |
+| Lambda  | Event processing            |
+| ECS     | Container execution         |
+| ECR     | Docker image repository     |
+| Bedrock | AI report generation        |
+
+---
+
+## Local Run
+
+```bash
+npm install
+npm run dev
+```
+
+---
+
+## Author
+
+Chanmin Mun
+
+GitHub:
+[https://github.com/chanminmun](https://github.com/chanminmun)
