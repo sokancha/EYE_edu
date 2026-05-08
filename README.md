@@ -68,8 +68,8 @@ Feature Extraction
 Amazon Bedrock Analysis
   ↓
 AI Report Generation
-
-
+````
+---
 ## Airflow Pipeline
 
 ```text
