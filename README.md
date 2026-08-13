@@ -1,8 +1,5 @@
-
-
-
 # DAI-Ly
-
+hello
 AI-based eye tracking learning focus analysis system.
 
 ## Overview
