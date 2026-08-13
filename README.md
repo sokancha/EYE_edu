@@ -87,41 +87,7 @@
 
 ## 🏗️ System Architecture
 
-```text
-User
- │
- ▼
-React Frontend ── AWS Amplify Hosting
- │
- │ 로그인
- ▼
-AWS Cognito (Auth)
- │
- │ 시선 데이터 업로드
- ▼
-AWS S3 (Raw Data)
- │
- │ 업로드 이벤트 트리거
- ▼
-AWS Lambda
- │
- ▼
-AWS ECS Fargate
- │
- ┌──────────────────────────┐
- │      Apache Airflow      │
- │                          │
- │  load_s3_data            │
- │      ↓                   │
- │  extract_features        │
- │      ↓                   │
- │  invoke_bedrock ─────────┼──▶ Amazon Bedrock (Claude)
- │      ↓                   │
- │  save_report             │
- └──────────────────────────┘
- │
- ▼
-AWS S3 (집중도 리포트)
+![아키텍쳐](Architecture.png)
 ```
 
 S3 업로드 이벤트로 Lambda가 트리거되어 데이터 수집부터 리포트 생성까지 자동으로 처리되는 **이벤트 기반 자동화** 구조입니다.
